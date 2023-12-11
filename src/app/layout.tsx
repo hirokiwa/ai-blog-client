@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: '毎日19時更新！AIおじさんによる独り言日記',
   openGraph: {
     title: '関西弁でお届けする AIおじさん毎日ブログ',
-    description: '毎日19時更新！AIおじさんによる独り言日記',
+    description: '毎日19時更新！！AIおじさんによる独り言日記',
     siteName: '関西弁でお届けする AIおじさん毎日ブログ',
     locale: 'ja_JP',
     type: 'website',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: '関西弁でお届けする AIおじさん毎日ブログ',
-    description: '毎日19時更新！AIおじさんによる独り言日記',
+    description: '毎日19時更新！！！AIおじさんによる独り言日記',
     creator: 'hiroki_int',
   },
 }
