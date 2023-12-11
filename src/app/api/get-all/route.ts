@@ -45,7 +45,7 @@ const initializeDb = () => {
   }
 }
 
-export const initializeBlogCollection = () => {
+const initializeBlogCollection = () => {
   try {
     const db = initializeDb();
     const collectionName = process.env.FIREBASE_BLOG_COLLECTION;
@@ -62,7 +62,7 @@ export const initializeBlogCollection = () => {
   }
 }
 
-export const timeStampToDate = (timeStamp: Timestamp) => {
+const timeStampToDate = (timeStamp: Timestamp) => {
   try {
     return timeStamp.toDate();
   } catch (e) {
