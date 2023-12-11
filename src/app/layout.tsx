@@ -10,7 +10,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: '関西弁でお届けする AIおじさん毎日ブログ',
     description: '毎日19時更新！AIおじさんによる独り言日記',
-    url: "https://github.com/hirokiwa/ai-blog-client/assets/89170014/2793a6a5-1212-4ec5-bd06-132e20ec7edc",
     siteName: '関西弁でお届けする AIおじさん毎日ブログ',
     locale: 'ja_JP',
     type: 'website',
