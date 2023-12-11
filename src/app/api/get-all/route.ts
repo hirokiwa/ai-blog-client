@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 import { initializeApp } from "firebase/app";
-import { collection, getFirestore, getDocs, Timestamp } from "firebase/firestore";
+import { collection, getFirestore, getDocs, Timestamp, query, where } from "firebase/firestore";
 
 export async function GET() {
   const data = await getAllBlogs();
@@ -11,15 +11,14 @@ export async function GET() {
 const getAllBlogs = async () => {
   try {
     const blogCollection = initializeBlogCollection();
-    const blogSnapshot = await getDocs(blogCollection);
+    const blogQuery = query(blogCollection, where("publishedAt", "<=", new Date()));
+    const blogSnapshot = await getDocs(blogQuery);
     const blogList = blogSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     const formatedData = blogList.map((b: any): blog => ({
       id: b.id,
       title: b.title,
       body: b.body,
-      createdAt: timeStampToDate(b.createdAt),
       publishedAt: timeStampToDate(b.publishedAt),
-      publiclyAvailable: b.publiclyAvailable,
     }));
     return formatedData.length > 0 ? formatedData : undefined;
   } catch (e) {
