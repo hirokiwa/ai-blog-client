@@ -5,10 +5,10 @@ import { collection, getFirestore, getDocs, Timestamp, query, where } from "fire
 
 export async function GET() {
   const data = await getAllBlogs();
-  return NextResponse.json( data ?? "Hello");
+  return NextResponse.json({ data: data ?? undefined } );
 }
 
-const getAllBlogs = async () => {
+const getAllBlogs = async (): Promise<blog[]|undefined> => {
   try {
     const blogCollection = initializeBlogCollection();
     const blogQuery = query(blogCollection, where("publishedAt", "<=", new Date()));
