@@ -13,8 +13,16 @@ const useAllBlogs = () => {
         startLoading();
         const response = await fetch(`/api/get-all`);
         const result = await response.json();
-        const formatedResult = result.data ? result.data as blog[] : null;
-        setAllBlogs(formatedResult ?? null);
+        const formatedResult = result.data ? result.data.map((d: any): blog => {
+          console.log(d.publishedAt)
+          console.log(new Date(d.publishedAt))
+          return ({
+          id: d.id,
+          title: d.title,
+          body: d.body,
+          publishedAt: new Date(d.publishedAt),
+        })}) as blog[]: null;
+        setAllBlogs(formatedResult);
         endLoading();
         return formatedResult;
       } catch (e) {
