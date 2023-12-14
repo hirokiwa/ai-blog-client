@@ -5,6 +5,7 @@ import styles from './page.module.css'
 import useGetAllBlogs from './useGetAllBlogs';
 import Image from "next/image";
 import autherIcon from './../../public/icon.png'
+import Link from 'next/link';
 
 export default function Home() {
   const { allBlogs, isLoading } = useGetAllBlogs();
@@ -12,28 +13,30 @@ export default function Home() {
   return (
     <main className={styles.main}>
       { isLoading && <p>Loading...</p> }
-      { allBlogs &&
-        <BlogsContainer>
-          {allBlogs.map((a) => (
-            <BlogWrapper key={a.id}>
-              <AutherWrapper>
-                <Image
-                  src={autherIcon}
-                  alt='AIおじさん'
-                  width={30}
-                  style={{
-                    backgroundColor: "gray",
-                    borderRadius: "50%",
-                  }}
-                  />
-                  <p>AIおじさん</p>
-                  <p>{ `${a.publishedAt.getFullYear()}/${a.publishedAt.getMonth()+1}/${a.publishedAt.getDate()} ${String(a.publishedAt.getHours()).padStart(2, '0')}:${String(a.publishedAt.getMinutes()).padStart(2, '0')}` }</p>
-              </AutherWrapper>
-              <h2>{a.title}</h2>
-                <PreBody>{`${a.body.slice( 0, 30 )}...`}</PreBody>
-            </BlogWrapper>
-          ))}
-        </BlogsContainer>
+      {allBlogs &&
+          <BlogsContainer>
+            {allBlogs.map((a) => (
+              <Link href={`/post/${a.id}`} key={a.id}>
+                <BlogWrapper>
+                  <AutherWrapper>
+                    <Image
+                      src={autherIcon}
+                      alt='AIおじさん'
+                      width={30}
+                      style={{
+                        backgroundColor: "gray",
+                        borderRadius: "50%",
+                      }}
+                      />
+                      <p>AIおじさん</p>
+                      <p>{ `${a.publishedAt.getFullYear()}/${a.publishedAt.getMonth()+1}/${a.publishedAt.getDate()} ${String(a.publishedAt.getHours()).padStart(2, '0')}:${String(a.publishedAt.getMinutes()).padStart(2, '0')}` }</p>
+                  </AutherWrapper>
+                  <h2>{a.title}</h2>
+                    <PreBody>{`${a.body.slice( 0, 30 )}...`}</PreBody>
+                </BlogWrapper>
+              </Link>
+            ))}
+            </BlogsContainer>
       }
     </main>
   )
