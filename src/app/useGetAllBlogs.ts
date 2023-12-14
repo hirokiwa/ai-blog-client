@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useState } from "react"
 
-const useAllBlogs = () => {
+const useGetAllBlogs = () => {
   const [allBlogs, setAllBlogs] = useState<blog[] | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   
@@ -11,11 +11,9 @@ const useAllBlogs = () => {
     const fetchData = async () => {
       try {
         startLoading();
-        const response = await fetch(`/api/get-all`);
+        const response = await fetch(`/api/get-all-blog`);
         const result = await response.json();
         const formatedResult = result.data ? result.data.map((d: any): blog => {
-          console.log(d.publishedAt)
-          console.log(new Date(d.publishedAt))
           return ({
           id: d.id,
           title: d.title,
@@ -35,4 +33,4 @@ const useAllBlogs = () => {
   return { allBlogs, isLoading }
 }
 
-export default useAllBlogs;
+export default useGetAllBlogs;

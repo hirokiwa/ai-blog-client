@@ -2,12 +2,12 @@
 
 import styled from 'styled-components';
 import styles from './page.module.css'
-import useAllBlogs from './useAllBlogs';
+import useGetAllBlogs from './useGetAllBlogs';
 import Image from "next/image";
 import autherIcon from './../../public/icon.png'
 
 export default function Home() {
-  const { allBlogs, isLoading } = useAllBlogs();
+  const { allBlogs, isLoading } = useGetAllBlogs();
   
   return (
     <main className={styles.main}>
