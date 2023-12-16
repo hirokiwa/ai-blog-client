@@ -19,7 +19,7 @@ const Loading = () => (
         alt={"AIおじさん"}
         width={300}
       />
-      <hr></hr>
+      <hr/>
       <p
         style={{
           margin: "1em",
