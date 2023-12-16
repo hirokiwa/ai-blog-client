@@ -1,16 +1,32 @@
 "use client"
-import styles from './page.module.css'
 import Image from "next/image";
-import handsUp from './../../public/loading.gif'
+import loadingAnimation from './../../public/loading.gif'
 
 const Loading = () => (
-  <main className={styles.main}>
-    <Image
-      src={handsUp}
-      alt={"AIおじさん"}
-      width={300}
-    ></Image>
-  </main>
+  <div style={{
+    height: "100vh",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  }}>
+    <div
+      style={{
+        textAlign: "center",
+      }}
+    >
+      <Image
+        src={loadingAnimation}
+        alt={"AIおじさん"}
+        width={300}
+      />
+      <hr></hr>
+      <p
+        style={{
+          margin: "1em",
+        }}
+      >loading...</p>
+    </div>
+  </div>
 )
 
 export default Loading;
