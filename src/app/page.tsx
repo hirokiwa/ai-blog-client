@@ -6,7 +6,7 @@ import Image from "next/image";
 import autherIcon from './../../public/icon.png'
 import Link from 'next/link';
 
-export default function Home() {
+export default function Top() {
   const { allBlogs, isLoading } = useGetAllBlogs();
   
   return (
