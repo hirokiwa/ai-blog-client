@@ -1,17 +1,13 @@
-"use client"
-
 import styles from './page.module.css'
-import useGetAllBlogs from './useGetAllBlogs';
 import Image from "next/image";
 import autherIcon from './../../public/icon.png'
 import Link from 'next/link';
+import getAllBlogs from './getAllBlogs';
 
-export default function Top() {
-  const { allBlogs, isLoading } = useGetAllBlogs();
-  
+const Top = async () => {
+  const allBlogs = await getAllBlogs();
   return (
     <main className={styles.main}>
-      { isLoading && <p>Loading...</p> }
       {allBlogs &&
           <div>
             {allBlogs.map((a) => (
@@ -40,3 +36,5 @@ export default function Top() {
     </main>
   )
 }
+
+export default Top;
