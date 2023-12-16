@@ -1,5 +1,5 @@
 import Image from "next/image";
-import loadingAnimation from './../../public/loading.gif'
+import loadingAnimation from './../../public/loading.gif';
 
 const Loading = () => (
   <div style={{
