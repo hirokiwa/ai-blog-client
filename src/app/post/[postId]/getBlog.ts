@@ -1,3 +1,5 @@
+"use server"
+
 const getBlog = async (blogId: string) => {
   try {
     const response = await fetch(`${process.env.HOST_NAME}/api/get-blog/${blogId}`);
