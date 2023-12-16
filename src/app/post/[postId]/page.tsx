@@ -1,18 +1,14 @@
-"use client"
-
-import styled from 'styled-components';
 import Image from "next/image";
 import autherIcon from './../../../../public/icon.png'
-import useGetBlog from './useGetBlog';
+import getBlog from './getBlog';
 
-export default function Page({ params }: { params: { postId: string } }) {
-  const { blog, isLoading } = useGetBlog({blogId: params.postId});
+const Post = async ({ params }: { params: { postId: string } }) => {
+  const blog = await getBlog(params.postId ?? "");
   
   return (
     <>
-      { isLoading && <p>Loading...</p> }
-      { blog &&
-        <BlogContainer>
+      { blog
+        ? <div>
           <Image
             src={autherIcon}
             alt='AIおじさん'
@@ -26,29 +22,13 @@ export default function Page({ params }: { params: { postId: string } }) {
             <p>{ `${blog.publishedAt.getFullYear()}/${blog.publishedAt.getMonth()+1}/${blog.publishedAt.getDate()} ${String(blog.publishedAt.getHours()).padStart(2, '0')}:${String(blog.publishedAt.getMinutes()).padStart(2, '0')}` }</p>
         <h2>{blog.title}</h2>
         <p style={{whiteSpace: 'pre-wrap'}}>{blog.body}</p>
-        </BlogContainer>
+        </div>
+        : <p>
+            <strong>記事が見つかりません。</strong>
+          </p>
       }
     </>
   )
 }
 
-const BlogWrapper = styled.div`
-  margin: 1em 0;
-  border-bottom: 1px solid;
-`
-
-const BlogContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`
-
-const AutherWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 1em 0;
-`
-
-const PreBody = styled.p`
-  text-overflow: ellipsis;
-`
+export default Post;
