@@ -8,8 +8,8 @@ const Top = async () => {
   const allBlogs = await getAllBlogs();
   return (
     <main className={styles.main}>
-      {allBlogs &&
-        <div>
+      {allBlogs
+        ? <div>
           {allBlogs.map((a) => (
             <Link href={`/post/${a.id}`} key={a.id}>
               <div>
@@ -32,6 +32,9 @@ const Top = async () => {
             </Link>
           ))}
         </div>
+        : <p>
+            <strong>記事が見つかりません。</strong>
+          </p>
       }
     </main>
   )

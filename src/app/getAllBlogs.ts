@@ -10,7 +10,9 @@ const getAllBlogs = async () => {
         publishedAt: new Date(d.publishedAt),
       })
     }) as blog[] : null;
-    return formatedResult;
+    return formatedResult && formatedResult.length > 0
+      ? formatedResult
+      : null;
   } catch (e) {
     console.error(e, "Faild to get get All Blogs.");
     return null;
