@@ -31,7 +31,7 @@ const Top = async () => {
                 </div>
               </Link>
             ))}
-            </div>
+          </div>
       }
     </main>
   )
