@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: '関西弁でお届けする AIおじさん毎日ブログ',
     images: ['https://github.com/hirokiwa/ai-blog-client/assets/89170014/131328d9-2bfc-411d-9ee6-da636d0de095'],
-    description: '毎日19時更新！！AIおじさんによる独り言日記',
+    description: '毎日19時更新！AIおじさんによる独り言日記',
     siteName: '関西弁でお届けする AIおじさん毎日ブログ',
     locale: 'ja_JP',
     type: 'website',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     images: ['https://github.com/hirokiwa/ai-blog-client/assets/89170014/131328d9-2bfc-411d-9ee6-da636d0de095'],
     title: '関西弁でお届けする AIおじさん毎日ブログ',
-    description: '毎日19時更新！！！AIおじさんによる独り言日記',
+    description: '毎日19時更新！AIおじさんによる独り言日記',
     creator: 'hiroki_int',
   },
 }
