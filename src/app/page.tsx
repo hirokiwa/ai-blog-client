@@ -1,6 +1,5 @@
 "use client"
 
-import styled from 'styled-components';
 import styles from './page.module.css'
 import useGetAllBlogs from './useGetAllBlogs';
 import Image from "next/image";
@@ -14,11 +13,11 @@ export default function Home() {
     <main className={styles.main}>
       { isLoading && <p>Loading...</p> }
       {allBlogs &&
-          <BlogsContainer>
+          <div>
             {allBlogs.map((a) => (
               <Link href={`/post/${a.id}`} key={a.id}>
-                <BlogWrapper>
-                  <AutherWrapper>
+                <div>
+                  <div>
                     <Image
                       src={autherIcon}
                       alt='AIおじさん'
@@ -30,35 +29,14 @@ export default function Home() {
                       />
                       <p>AIおじさん</p>
                       <p>{ `${a.publishedAt.getFullYear()}/${a.publishedAt.getMonth()+1}/${a.publishedAt.getDate()} ${String(a.publishedAt.getHours()).padStart(2, '0')}:${String(a.publishedAt.getMinutes()).padStart(2, '0')}` }</p>
-                  </AutherWrapper>
+                  </div>
                   <h2>{a.title}</h2>
-                    <PreBody>{`${a.body.slice( 0, 30 )}...`}</PreBody>
-                </BlogWrapper>
+                    <p>{`${a.body.slice( 0, 30 )}...`}</p>
+                </div>
               </Link>
             ))}
-            </BlogsContainer>
+            </div>
       }
     </main>
   )
 }
-
-const BlogWrapper = styled.div`
-  margin: 1em 0;
-  border-bottom: 1px solid;
-`
-
-const BlogsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`
-
-const AutherWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 1em 0;
-`
-
-const PreBody = styled.p`
-  text-overflow: ellipsis;
-`
