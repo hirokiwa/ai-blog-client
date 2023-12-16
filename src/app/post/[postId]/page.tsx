@@ -1,15 +1,12 @@
-"use client"
-
 import Image from "next/image";
 import autherIcon from './../../../../public/icon.png'
-import useGetBlog from './useGetBlog';
+import getBlog from './getBlog';
 
-export default function Page({ params }: { params: { postId: string } }) {
-  const { blog, isLoading } = useGetBlog({blogId: params.postId});
+const Post = async ({ params }: { params: { postId: string } }) => {
+  const blog = await getBlog(params.postId ?? "");
   
   return (
     <>
-      { isLoading && <p>Loading...</p> }
       { blog &&
         <div>
           <Image
@@ -30,3 +27,5 @@ export default function Page({ params }: { params: { postId: string } }) {
     </>
   )
 }
+
+export default Post;
