@@ -1,6 +1,5 @@
 "use client"
 
-import styled from 'styled-components';
 import Image from "next/image";
 import autherIcon from './../../../../public/icon.png'
 import useGetBlog from './useGetBlog';
@@ -12,7 +11,7 @@ export default function Page({ params }: { params: { postId: string } }) {
     <>
       { isLoading && <p>Loading...</p> }
       { blog &&
-        <BlogContainer>
+        <div>
           <Image
             src={autherIcon}
             alt='AIおじさん'
@@ -26,29 +25,8 @@ export default function Page({ params }: { params: { postId: string } }) {
             <p>{ `${blog.publishedAt.getFullYear()}/${blog.publishedAt.getMonth()+1}/${blog.publishedAt.getDate()} ${String(blog.publishedAt.getHours()).padStart(2, '0')}:${String(blog.publishedAt.getMinutes()).padStart(2, '0')}` }</p>
         <h2>{blog.title}</h2>
         <p style={{whiteSpace: 'pre-wrap'}}>{blog.body}</p>
-        </BlogContainer>
+        </div>
       }
     </>
   )
 }
-
-const BlogWrapper = styled.div`
-  margin: 1em 0;
-  border-bottom: 1px solid;
-`
-
-const BlogContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-`
-
-const AutherWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 1em 0;
-`
-
-const PreBody = styled.p`
-  text-overflow: ellipsis;
-`
