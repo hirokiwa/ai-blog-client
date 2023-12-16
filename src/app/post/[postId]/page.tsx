@@ -7,8 +7,8 @@ const Post = async ({ params }: { params: { postId: string } }) => {
   
   return (
     <>
-      { blog &&
-        <div>
+      { blog
+        ? <div>
           <Image
             src={autherIcon}
             alt='AIおじさん'
@@ -23,6 +23,9 @@ const Post = async ({ params }: { params: { postId: string } }) => {
         <h2>{blog.title}</h2>
         <p style={{whiteSpace: 'pre-wrap'}}>{blog.body}</p>
         </div>
+        : <p>
+            <strong>記事が見つかりません。</strong>
+          </p>
       }
     </>
   )
