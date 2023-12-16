@@ -25,7 +25,7 @@ export default function Page({ params }: { params: { postId: string } }) {
             <p>AIおじさん</p>
             <p>{ `${blog.publishedAt.getFullYear()}/${blog.publishedAt.getMonth()+1}/${blog.publishedAt.getDate()} ${String(blog.publishedAt.getHours()).padStart(2, '0')}:${String(blog.publishedAt.getMinutes()).padStart(2, '0')}` }</p>
         <h2>{blog.title}</h2>
-        <p>{blog.body}</p>
+        <p style={{whiteSpace: 'pre-wrap'}}>{blog.body}</p>
         </BlogContainer>
       }
     </>
