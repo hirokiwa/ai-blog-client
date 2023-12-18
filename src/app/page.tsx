@@ -3,7 +3,7 @@ import Image from "next/image";
 import autherIcon from './../../public/icon.png'
 import Link from 'next/link';
 import getAllBlogs from './getAllBlogs';
-import loadingAnimation from './../../public/loading.gif';
+import AnimationMessage from '@/components/AnimationMessage';
 
 interface Props {
   blogData: blog;
@@ -60,27 +60,12 @@ const Content = async () => {
   )
 }
 
-const Developing = () => (
-  <div className="h-screen flex justify-center items-center">
-  <div className="text-center">
-    <Image
-      src={loadingAnimation}
-      alt="AIおじさん"
-      width={300}
-    />
-    <hr className="my-4" />
-    <p className="m-4">now developing...</p>
-  </div>
-</div>
-
-)
-
 const Top = async () => {
   const isPublished = process.env.IS_PUBLISHED === "true";
   return (
     isPublished
       ? <Content />
-      : <Developing/>
+      : <AnimationMessage message='now developing...'/>
   )
 }
 
