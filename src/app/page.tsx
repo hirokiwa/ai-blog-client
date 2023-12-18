@@ -19,10 +19,7 @@ const Content = async () => {
                     src={autherIcon}
                     alt='AIおじさん'
                     width={30}
-                    style={{
-                      backgroundColor: "gray",
-                      borderRadius: "50%",
-                    }}
+                    className="bg-gray-500 rounded-full"
                   />
                   <p>AIおじさん</p>
                   <p>{`${a.publishedAt.getFullYear()}/${a.publishedAt.getMonth() + 1}/${a.publishedAt.getDate()} ${String(a.publishedAt.getHours()).padStart(2, '0')}:${String(a.publishedAt.getMinutes()).padStart(2, '0')}`}</p>
@@ -42,30 +39,18 @@ const Content = async () => {
 }
 
 const Developing = () => (
-  <div style={{
-    height: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  }}>
-    <div
-      style={{
-        textAlign: "center",
-      }}
-    >
-      <Image
-        src={loadingAnimation}
-        alt={"AIおじさん"}
-        width={300}
-      />
-      <hr/>
-      <p
-        style={{
-          margin: "1em",
-        }}
-      >now developing...</p>
-    </div>
+  <div className="h-screen flex justify-center items-center">
+  <div className="text-center">
+    <Image
+      src={loadingAnimation}
+      alt="AIおじさん"
+      width={300}
+    />
+    <hr className="my-4" />
+    <p className="m-4">now developing...</p>
   </div>
+</div>
+
 )
 
 const Top = async () => {

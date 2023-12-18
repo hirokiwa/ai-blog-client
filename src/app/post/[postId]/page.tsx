@@ -13,15 +13,12 @@ const Post = async ({ params }: { params: { postId: string } }) => {
             src={autherIcon}
             alt='AIおじさん'
             width={30}
-            style={{
-              backgroundColor: "gray",
-              borderRadius: "50%",
-            }}
+            className="bg-gray-500 rounded-full"
             />
             <p>AIおじさん</p>
             <p>{ `${blog.publishedAt.getFullYear()}/${blog.publishedAt.getMonth()+1}/${blog.publishedAt.getDate()} ${String(blog.publishedAt.getHours()).padStart(2, '0')}:${String(blog.publishedAt.getMinutes()).padStart(2, '0')}` }</p>
         <h2>{blog.title}</h2>
-        <p style={{whiteSpace: 'pre-wrap'}}>{blog.body}</p>
+        <p className="whitespace-pre-wrap">{blog.body}</p>
         </div>
         : <p>
             <strong>記事が見つかりません。</strong>
