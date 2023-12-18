@@ -26,7 +26,7 @@ const Content = async () => {
                     <p>{`${a.publishedAt.getFullYear()}/${a.publishedAt.getMonth() + 1}/${a.publishedAt.getDate()} ${String(a.publishedAt.getHours()).padStart(2, '0')}:${String(a.publishedAt.getMinutes()).padStart(2, '0')}`}</p>
                   </div>
                   <h2>{a.title}</h2>
-                  <p>{`${a.body}`}</p>
+                  <p className='truncate'>{`${a.body}`}</p>
                 </div>
               </Link>
             ))}
