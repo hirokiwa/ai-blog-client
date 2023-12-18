@@ -25,7 +25,7 @@ const Content = async () => {
                     <p>AIおじさん</p>
                     <p>{`${a.publishedAt.getFullYear()}/${a.publishedAt.getMonth() + 1}/${a.publishedAt.getDate()} ${String(a.publishedAt.getHours()).padStart(2, '0')}:${String(a.publishedAt.getMinutes()).padStart(2, '0')}`}</p>
                   </div>
-                  <h2>{a.title}</h2>
+                  <h2 className='text-2xl font-bold mb-4'>{a.title}</h2>
                   <p className='truncate'>{`${a.body}`}</p>
                 </div>
               </Link>
