@@ -1,4 +1,4 @@
-import styles from './page.module.css'
+import styles from './globals.module.css'
 import Image from "next/image";
 import autherIcon from './../../public/icon.png'
 import Link from 'next/link';
@@ -9,31 +9,33 @@ const Content = async () => {
   const allBlogs =  await getAllBlogs();
   return (
     <main className={styles.main}>
-      {allBlogs
-        ? <div>
-          {allBlogs.map((a) => (
-            <Link href={`/post/${a.id}`} key={a.id}>
-              <div>
+      <div className={styles.centerContent}>
+        {allBlogs
+          ? <div>
+            {allBlogs.map((a) => (
+              <Link href={`/post/${a.id}`} key={a.id}>
                 <div>
-                  <Image
-                    src={autherIcon}
-                    alt='AIおじさん'
-                    width={30}
-                    className="bg-gray-500 rounded-full"
-                  />
-                  <p>AIおじさん</p>
-                  <p>{`${a.publishedAt.getFullYear()}/${a.publishedAt.getMonth() + 1}/${a.publishedAt.getDate()} ${String(a.publishedAt.getHours()).padStart(2, '0')}:${String(a.publishedAt.getMinutes()).padStart(2, '0')}`}</p>
+                  <div>
+                    <Image
+                      src={autherIcon}
+                      alt='AIおじさん'
+                      width={30}
+                      className="bg-gray-500 rounded-full"
+                    />
+                    <p>AIおじさん</p>
+                    <p>{`${a.publishedAt.getFullYear()}/${a.publishedAt.getMonth() + 1}/${a.publishedAt.getDate()} ${String(a.publishedAt.getHours()).padStart(2, '0')}:${String(a.publishedAt.getMinutes()).padStart(2, '0')}`}</p>
+                  </div>
+                  <h2>{a.title}</h2>
+                  <p>{`${a.body}`}</p>
                 </div>
-                <h2>{a.title}</h2>
-                <p>{`${a.body.slice(0, 30)}...`}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-        : <p>
-          <strong>記事が見つかりません。</strong>
-        </p>
-      }
+              </Link>
+            ))}
+          </div>
+          : <p>
+            <strong>記事が見つかりません。</strong>
+          </p>
+        }
+      </div>
     </main>
   )
 }

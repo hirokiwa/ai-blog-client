@@ -1,12 +1,14 @@
 import Image from "next/image";
 import autherIcon from './../../../../public/icon.png'
 import getBlog from './getBlog';
+import styles from './../../globals.module.css';
 
 const Post = async ({ params }: { params: { postId: string } }) => {
   const blog = await getBlog(params.postId ?? "");
   
   return (
-    <>
+    <main className={styles.main}>
+      <div className={styles.centerContent}>
       { blog
         ? <div>
           <Image
@@ -23,8 +25,9 @@ const Post = async ({ params }: { params: { postId: string } }) => {
         : <p>
             <strong>記事が見つかりません。</strong>
           </p>
-      }
-    </>
+        }
+      </div>
+    </main>
   )
 }
 
