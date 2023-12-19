@@ -1,7 +1,7 @@
 import styles from './globals.module.css'
 import Image from "next/image";
 import topImage from './../../public/top-image.png'
-import getAllBlogs from './getAllBlogs';
+import getAllBlogs from '../functions/getAllBlogs';
 import AnimationMessage from '@/components/AnimationMessage';
 import BlogContainer from './_components/BlogContainer';
 

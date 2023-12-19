@@ -123,6 +123,11 @@ hr {
   background:  rgb(var(--hover-background-start-rgb));
 }
 
+.verticalBar {
+  border: solid rgb(var(--border-color-rgb));
+}
+
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

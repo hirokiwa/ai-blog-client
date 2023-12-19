@@ -14,7 +14,10 @@ const TopicPath = ({path}: Props) => {
       {
         path.map((p, i) => {
           return (
-            <div className="flex items-center opacity-70">
+            <div
+              className="flex items-center opacity-70"
+              key={`path${i}`}
+            >
               {i !==0 && <span className="material-symbols-outlined">navigate_next</span>}
               {p.href
                 ? <Link
