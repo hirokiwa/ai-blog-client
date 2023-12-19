@@ -143,11 +143,13 @@ const getAllBlogs = async (): Promise<blog[]|undefined> => {
     const blogQuery = query(blogCollection, where("publishedAt", "<=", new Date()), orderBy("publishedAt", "desc"));
     const blogSnapshot = await getDocs(blogQuery);
     const blogList = blogSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    const formatedData = blogList.map((b: any): blog => ({
-      id: b.id,
-      title: b.title,
-      body: b.body,
-      publishedAt: timeStampToDate(b.publishedAt),
+    const formatedData = blogList
+      .filter((b: any) => b.publiclyAvailable )
+      .map((b: any): blog => ({
+        id: b.id,
+        title: b.title,
+        body: b.body,
+        publishedAt: timeStampToDate(b.publishedAt),
     }));
     return formatedData.length > 0 ? formatedData : undefined;
   } catch (e) {
