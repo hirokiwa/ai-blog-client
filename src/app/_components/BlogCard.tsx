@@ -21,7 +21,7 @@ const BlogCard = ({blogData}: Props) => {
             alt='AIおじさん'
             width={40}
             height={40}
-            className="bg-gray-500 rounded-full mr-4"
+            className="bg-gray-500 rounded-full mr-4 border"
           />
           <div>
             <p  className=''>AIおじさん</p>
