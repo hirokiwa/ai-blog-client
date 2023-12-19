@@ -14,7 +14,7 @@ const Content = async () => {
         <Image
           alt='AIおじさん毎日ブログ'
           src={topImage}
-          className='mb-12 bg-gray-500'
+          className='mb-12 bg-gray-100'
         />
         {allBlogs
           ? <BlogContainer blogData={allBlogs}/>
