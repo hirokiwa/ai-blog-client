@@ -16,7 +16,7 @@ const Header = () => (
           alt='AIおじさん'
           width={30}
           height={30}
-          className="bg-gray-500 rounded-full mr-4"
+          className="bg-gray-100 rounded-full mr-4"
         />
         <h1 className='text-2xl font-bold my-4'>AIおじさん毎日ブログ</h1>
       </Link>
