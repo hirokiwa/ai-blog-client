@@ -1,4 +1,4 @@
-const removeNewline = (inputString: string): string => {
+const removeNewlineInAngleBrackets = (inputString: string): string => {
   const startSymbol = '「';
   const endSymbol = '」';
   const sentenceEndings = [startSymbol, endSymbol];
@@ -37,12 +37,12 @@ const insertNewline = (inputString: string): string => {
       : current;
   })
 
-  return removeNewline(reversedResult.reverse().join(''));
+  return removeNewlineInAngleBrackets(reversedResult.reverse().join(''));
 }
 
 const formatContent = (inputString: string): string => {
   const insertedNewline = insertNewline(inputString);
-  const removedNewlie = removeNewline(insertedNewline);
+  const removedNewlie = removeNewlineInAngleBrackets(insertedNewline);
 
   return removedNewlie;
 }
