@@ -1,79 +1,38 @@
-import styles from './page.module.css'
+import styles from './globals.module.css'
 import Image from "next/image";
-import autherIcon from './../../public/icon.png'
-import Link from 'next/link';
-import getAllBlogs from './getAllBlogs';
-import loadingAnimation from './../../public/loading.gif';
+import topImage from './../../public/top-image.png'
+import getAllBlogs from '../functions/getAllBlogs';
+import AnimationMessage from '@/components/AnimationMessage';
+import BlogContainer from './_components/BlogContainer';
+
 
 const Content = async () => {
   const allBlogs =  await getAllBlogs();
   return (
     <main className={styles.main}>
-      {allBlogs
-        ? <div>
-          {allBlogs.map((a) => (
-            <Link href={`/post/${a.id}`} key={a.id}>
-              <div>
-                <div>
-                  <Image
-                    src={autherIcon}
-                    alt='AIおじさん'
-                    width={30}
-                    style={{
-                      backgroundColor: "gray",
-                      borderRadius: "50%",
-                    }}
-                  />
-                  <p>AIおじさん</p>
-                  <p>{`${a.publishedAt.getFullYear()}/${a.publishedAt.getMonth() + 1}/${a.publishedAt.getDate()} ${String(a.publishedAt.getHours()).padStart(2, '0')}:${String(a.publishedAt.getMinutes()).padStart(2, '0')}`}</p>
-                </div>
-                <h2>{a.title}</h2>
-                <p>{`${a.body.slice(0, 30)}...`}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-        : <p>
-          <strong>記事が見つかりません。</strong>
-        </p>
-      }
+      <div className={styles.centerContent}>
+        <Image
+          alt='AIおじさん毎日ブログ'
+          src={topImage}
+          className='mb-12 bg-gray-500'
+        />
+        {allBlogs
+          ? <BlogContainer blogData={allBlogs}/>
+          : <p>
+              <strong>記事が見つかりません。</strong>
+            </p>
+        }
+      </div>
     </main>
   )
 }
-
-const Developing = () => (
-  <div style={{
-    height: "100vh",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  }}>
-    <div
-      style={{
-        textAlign: "center",
-      }}
-    >
-      <Image
-        src={loadingAnimation}
-        alt={"AIおじさん"}
-        width={300}
-      />
-      <hr/>
-      <p
-        style={{
-          margin: "1em",
-        }}
-      >now developing...</p>
-    </div>
-  </div>
-)
 
 const Top = async () => {
   const isPublished = process.env.IS_PUBLISHED === "true";
   return (
     isPublished
       ? <Content />
-      : <Developing/>
+      : <AnimationMessage message='now developing...'/>
   )
 }
 

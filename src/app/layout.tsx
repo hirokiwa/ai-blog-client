@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Script from 'next/script'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -44,7 +46,16 @@ export default function RootLayout({
           gtag('config', 'G-60E1EY0ZFC');
           `}
       </Script>
-      <body className={inter.className}>{children}</body>
+      <body
+        className={inter.className}
+        style={{
+          minHeight: "100vh",
+        }}
+      >
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }
