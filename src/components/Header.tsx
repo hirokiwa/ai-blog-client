@@ -7,7 +7,7 @@ const Header = () => (
     <div className='inline-block'>
       <Link
         href='/'
-        className='flex items-center ml-8 hover:text-gray-400 hover:underline group'
+        className='flex items-center ml-8 hover:underline hover:opacity-70'
         title='トップページを読み込む'
         aria-label='トップページを読み込む'
       >
@@ -16,7 +16,7 @@ const Header = () => (
           alt='AIおじさん'
           width={30}
           height={30}
-          className="bg-gray-500 rounded-full mr-4 group-hover:shadow-md"
+          className="bg-gray-500 rounded-full mr-4"
         />
         <h1 className='text-2xl font-bold my-4'>AIおじさん毎日ブログ</h1>
       </Link>
