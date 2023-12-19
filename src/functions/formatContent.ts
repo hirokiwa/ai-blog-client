@@ -43,8 +43,10 @@ const insertNewline = (inputString: string): string => {
 const formatContent = (inputString: string): string => {
   const insertedNewline = insertNewline(inputString);
   const removedNewlie = removeNewlineInAngleBrackets(insertedNewline);
+  const removedHalfIndent = removedNewlie.replaceAll(' ', '');
+  const removedFullIndent = removedHalfIndent.replaceAll('　', '');
 
-  return removedNewlie;
+  return removedFullIndent;
 }
 
 export default formatContent;
