@@ -11,6 +11,7 @@ const BlogCard = ({blogData}: Props) => {
     <Link
       href={`/post/${blogData.id}`}
       title={blogData.title}
+      aria-label={blogData.title}
       className='py-8'
     >
       <div className='my-8 mx-8'>
