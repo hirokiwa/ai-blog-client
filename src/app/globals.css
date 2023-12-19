@@ -11,6 +11,7 @@
 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
+  --hover-background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
   --primary-glow: conic-gradient(
@@ -50,6 +51,7 @@
   :root {
     --foreground-rgb: 217, 217, 217;
     --background-start-rgb: 38, 38, 38;
+    --hover-background-start-rgb: 45, 45, 45;
     --background-end-rgb: 38, 38, 38;
 
     --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
@@ -115,6 +117,10 @@ hr {
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
+}
+
+.hoverdBackgroundColor:hover {
+  background:  rgb(var(--hover-background-start-rgb));
 }
 
 @media (prefers-color-scheme: dark) {
