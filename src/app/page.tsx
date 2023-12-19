@@ -1,6 +1,7 @@
 import styles from './globals.module.css'
 import Image from "next/image";
 import autherIcon from './../../public/icon.png'
+import topImage from './../../public/top-image.png'
 import Link from 'next/link';
 import getAllBlogs from './getAllBlogs';
 import AnimationMessage from '@/components/AnimationMessage';
@@ -11,12 +12,12 @@ interface Props {
 
 const BlogCard = ({blogData}: Props) => {
   return (
-    <div className='my-8 mx-8'>
-      <Link
-        href={`/post/${blogData.id}`}
-        title={blogData.title}
-        className='my-8'
-        >
+    <Link
+      href={`/post/${blogData.id}`}
+      title={blogData.title}
+      className='py-8'
+    >
+      <div className='my-8 mx-8'>
         <div>
           <div className='flex items-center'>
             <Image
@@ -34,23 +35,37 @@ const BlogCard = ({blogData}: Props) => {
           <h2 className='text-2xl font-bold my-4'>{blogData.title}</h2>
           <p className='truncate'>{`${blogData.body}`}</p>
         </div>
-      </Link>
     </div>
+    </Link>
   )
 }
+
+const BlogContainer = ({ blogData }: { blogData: blog[]}) => (
+  <>
+    <p className='text-2xl font-bold mx-4 my-2'>最新の記事</p>
+    <hr/>
+    {
+      blogData.map((b) => (
+      <div key={b.id}>
+        <BlogCard blogData={b} />
+        <hr/>
+      </div>
+    ))}
+  </>
+)
 
 const Content = async () => {
   const allBlogs =  await getAllBlogs();
   return (
     <main className={styles.main}>
       <div className={styles.centerContent}>
+        <Image
+          alt='AIおじさん毎日ブログ'
+          src={topImage}
+          className='mb-12 bg-gray-500'
+        />
         {allBlogs
-          ? allBlogs.map((a) => (
-            <div key={a.id}>
-              <BlogCard blogData={a} />
-              <hr/>
-            </div>
-            ))
+          ? <BlogContainer blogData={allBlogs}/>
           : <p>
               <strong>記事が見つかりません。</strong>
             </p>
