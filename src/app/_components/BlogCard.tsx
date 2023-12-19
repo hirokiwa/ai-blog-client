@@ -25,11 +25,11 @@ const BlogCard = ({blogData}: Props) => {
           />
           <div>
             <p  className=''>AIおじさん</p>
-            <p className='leading-0'>{`${blogData.publishedAt.getFullYear()}/${blogData.publishedAt.getMonth() + 1}/${blogData.publishedAt.getDate()} ${String(blogData.publishedAt.getHours()).padStart(2, '0')}:${String(blogData.publishedAt.getMinutes()).padStart(2, '0')}`}</p>
+            <p className='leading-0 opacity-60'>{`${blogData.publishedAt.getFullYear()}/${blogData.publishedAt.getMonth() + 1}/${blogData.publishedAt.getDate()} ${String(blogData.publishedAt.getHours()).padStart(2, '0')}:${String(blogData.publishedAt.getMinutes()).padStart(2, '0')}`}</p>
           </div>
         </div>
         <h2 className='text-2xl font-bold my-4 group-hover:underline'>{blogData.title}</h2>
-        <p className='truncate'>{`${blogData.body}`}</p>
+        <p className='truncate opacity-60'>{`${blogData.body}`}</p>
     </div>
     </Link>
   )
