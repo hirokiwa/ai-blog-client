@@ -5,7 +5,7 @@ interface Props {
   nextBlog: blog | null;
 }
 
-const SideBlogs = async ({previousBlog, nextBlog}: Props) => {
+const SideBlogs = async ({ previousBlog, nextBlog }: Props) => {
   if (!previousBlog && !nextBlog) {
     return null;
   }

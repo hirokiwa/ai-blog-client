@@ -5,11 +5,14 @@ const getAllBlogs = async () => {
     const response = await fetch(`${process.env.HOST_NAME}/api/get-all-blog`);
     const result = await response.json();
     const formatedResult = result.data ? result.data.map((d: any): blog => {
+      const TIME_DIFFERENCE = 9;
+      const publishedDate = new Date(d.publishedAt);
+      publishedDate.setHours(publishedDate.getHours() + TIME_DIFFERENCE);
       return ({
         id: d.id,
         title: d.title,
         body: d.body,
-        publishedAt: new Date(d.publishedAt),
+        publishedAt: publishedDate,
       })
     }) as blog[] : null;
     return formatedResult && formatedResult.length > 0
