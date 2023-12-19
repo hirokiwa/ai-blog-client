@@ -2,6 +2,7 @@ import Image from "next/image";
 import autherIcon from './../../../../public/icon.png'
 import getBlog from './getBlog';
 import styles from './../../globals.module.css';
+import formatContent from "@/functions/formatContent";
 
 const Content = ({ blogData }: { blogData: blog}) => (
   <div>
@@ -19,7 +20,7 @@ const Content = ({ blogData }: { blogData: blog}) => (
         <p className='leading-0'>{`${blogData.publishedAt.getFullYear()}/${blogData.publishedAt.getMonth() + 1}/${blogData.publishedAt.getDate()} ${String(blogData.publishedAt.getHours()).padStart(2, '0')}:${String(blogData.publishedAt.getMinutes()).padStart(2, '0')}`}</p>
       </div>
     </div>
-    <p className="whitespace-pre-wrap ">{blogData.body}</p>
+    <p className="whitespace-pre-wrap">{formatContent(blogData.body)}</p>
   </div>
 )
 
