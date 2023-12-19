@@ -44,6 +44,10 @@
     grid-column: 1 / 13;
   }
   
+  .sidePadding {
+    padding: 0 1rem;
+  }
+  
   .content {
     padding: 4rem;
   }
@@ -120,7 +124,7 @@
 }
 
 /* Tablet and Smaller Desktop */
-@media (min-width: 701px) and (max-width: 1120px) {
+@media (min-width: 701px) and (max-width: 830px) {
   .centerContent {
     grid-column: 2 / 12;
     max-width: 830px;

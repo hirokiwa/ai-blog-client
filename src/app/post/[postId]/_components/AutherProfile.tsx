@@ -8,7 +8,7 @@ const AutherProfile = () => (
       alt='AIおじさん'
       width={60}
       height={60}
-      className="bg-gray-500 rounded-full mr-4"
+      className="bg-gray-100 rounded-full mr-4 border"
     />
     <div>
       <p  className='text-lg'>AIおじさん</p>

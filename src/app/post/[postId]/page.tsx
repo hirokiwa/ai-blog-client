@@ -21,30 +21,36 @@ const Content = ({ blogData }: { blogData: blog }) => {
   ]
   return(
     <div>
-      <TopicPath path={pathData} />
-      <h1 className='text-4xl font-bold my-4'>{blogData.title}</h1>
-      <div className='flex items-center mt-8 mb-16'>
-        <Image
-          src={autherIcon}
-          alt='AIおじさん'
-          width={40}
-          height={40}
-          className="bg-gray-500 rounded-full mr-4"
-        />
-        <div>
-          <p  className=''>AIおじさん</p>
-          <p className='leading-0 opacity-60'>{`${blogData.publishedAt.getFullYear()}/${blogData.publishedAt.getMonth() + 1}/${blogData.publishedAt.getDate()} ${String(blogData.publishedAt.getHours()).padStart(2, '0')}:${String(blogData.publishedAt.getMinutes()).padStart(2, '0')}`}</p>
+      <div className={styles.sidePadding}>
+        <TopicPath path={pathData} />
+        <h1 className='text-4xl font-bold my-4'>{blogData.title}</h1>
+        <div className='flex items-center mt-8 mb-16'>
+          <Image
+            src={autherIcon}
+            alt='AIおじさん'
+            width={40}
+            height={40}
+            className="bg-gray-100 rounded-full mr-4 border"
+            />
+          <div>
+            <p  className=''>AIおじさん</p>
+            <p className='leading-0 opacity-60'>{`${blogData.publishedAt.getFullYear()}/${blogData.publishedAt.getMonth() + 1}/${blogData.publishedAt.getDate()} ${String(blogData.publishedAt.getHours()).padStart(2, '0')}:${String(blogData.publishedAt.getMinutes()).padStart(2, '0')}`}</p>
+          </div>
+        </div>
+        <div className="mb-16">
+        <p className="whitespace-pre-wrap">{formatContent(blogData.body)}</p>
         </div>
       </div>
-      <div className="mb-16">
-      <p className="whitespace-pre-wrap">{formatContent(blogData.body)}</p>
+      <hr />
+      <div className={styles.sidePadding}>
+        <AutherProfile />
       </div>
-      <hr/>
-      <AutherProfile />
       <hr />
       <OtherBlogs currendId={blogData.id} />
-      <hr className="mb-16"/>
-      <TopicPath path={pathData} />
+      <hr className="mb-16" />
+      <div className={styles.sidePadding}>
+        <TopicPath path={pathData} />
+      </div>
     </div>
   )
 }
