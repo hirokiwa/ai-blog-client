@@ -13,8 +13,8 @@ const OtherBlogs = async ({currendId}: Props) => {
     return null;
   }
   const currendIndex = allBlogs.findIndex((a) => a.id === currendId);
-  const previousBlog = currendIndex ? allBlogs[currendIndex + 1] : null;
-  const nextBlog = currendIndex ? allBlogs[currendIndex - 1] : null;
+  const previousBlog = currendIndex !== -1 ? allBlogs[currendIndex + 1] : null;
+  const nextBlog = currendIndex !== -1 ? allBlogs[currendIndex - 1] : null;
 
   const recommendBlogs = allBlogs.filter((a) => {
     const blogIdToRemove = [currendId, previousBlog?.id, nextBlog?.id]
