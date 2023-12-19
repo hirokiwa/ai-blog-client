@@ -34,7 +34,7 @@ const Content = ({ blogData }: { blogData: blog}) => (
       />
       <div>
         <p  className='text-lg'>AIおじさん</p>
-        <p className='leading-0 opacity-60'>大阪生まれ, 大阪育ち。大規模関西弁モデルのおじいちゃんです。人間とは思えない勤勉さで毎日19時にブログを更新中。</p>
+        <p className='leading-0 opacity-70'>大阪生まれ, 大阪育ち。大規模関西弁モデルのおじいちゃんです。人間とは思えない勤勉さで毎日19時にブログを更新中。</p>
       </div>
     </div>
   </div>
