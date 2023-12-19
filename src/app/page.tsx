@@ -5,6 +5,7 @@ import getAllBlogs from './getAllBlogs';
 import AnimationMessage from '@/components/AnimationMessage';
 import BlogContainer from './_components/BlogContainer';
 
+
 const Content = async () => {
   const allBlogs =  await getAllBlogs();
   return (
