@@ -140,7 +140,10 @@ export async function GET() {
 const getAllBlogs = async (): Promise<blog[]|undefined> => {
   try {
     const blogCollection = initializeBlogCollection();
-    const blogQuery = query(blogCollection, where("publishedAt", "<=", new Date()), orderBy("publishedAt", "desc"));
+    const TIME_DIFFERENCE = 9;
+    const publishedDate = new Date();
+    publishedDate.setHours(publishedDate.getHours() + TIME_DIFFERENCE);
+    const blogQuery = query(blogCollection, where("publishedAt", "<=", publishedDate), orderBy("publishedAt", "desc"));
     const blogSnapshot = await getDocs(blogQuery);
     const blogList = blogSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     const formatedData = blogList
