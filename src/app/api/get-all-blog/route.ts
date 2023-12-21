@@ -140,7 +140,7 @@ export async function GET() {
 const getAllBlogs = async (): Promise<blog[]|undefined> => {
   try {
     const blogCollection = initializeBlogCollection();
-    const TIME_DIFFERENCE = -9;
+    const TIME_DIFFERENCE = Number(process.env.TIME_DIFFERENCE ?? "0");
     const publishedDate = new Date();
     publishedDate.setHours(publishedDate.getHours() + TIME_DIFFERENCE);
     const blogQuery = query(blogCollection, where("publishedAt", "<=", publishedDate), orderBy("publishedAt", "desc"));
