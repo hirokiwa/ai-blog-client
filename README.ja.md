@@ -10,8 +10,7 @@
 このブログの記事は全て [gpt-3.5 Turbo](https://platform.openai.com/docs/models/gpt-3-5) によって生成されています。[記事生成用のワークフロー](https://github.com/hirokiwa/ai-blog-generator)は毎日自動で実行されており、19:00（UTC+9）に新しいブログ記事が更新されます。
 
 ## イメージ
-<img src="https://github.com/hirokiwa/ai-blog-client/assets/89170014/fd58a8cb-e443-45f5-b4e9-fa5856e22539
-" width="500px" alt="AIおじさん毎日ブログ"/>
+<img src="https://github.com/hirokiwa/ai-blog-client/assets/89170014/2248ab78-ba50-4d06-8a4f-670aee1ba0ad" width="500px" alt="AIおじさん毎日ブログ"/>
 
 関西弁でお届けする、愉快なAIおじさんの独り言です。
 
