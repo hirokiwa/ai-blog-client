@@ -8,8 +8,8 @@ const Header = () => (
       <Link
         href='/'
         className='flex items-center ml-8 hover:underline hover:opacity-70'
-        title='トップページを読み込む'
-        aria-label='トップページを読み込む'
+        title='AIおじさん毎日ブログのトップページを読み込む'
+        aria-label='AIおじさん毎日ブログのトップページを読み込む'
       >
         <Image
           src={autherIcon}
