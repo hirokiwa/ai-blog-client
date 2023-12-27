@@ -18,4 +18,4 @@ The posts are crafted in the lively and cheerful manner of a guy using the Kansa
 ## Links
 
 **Read Now in Production** 👉 [AI Guy's Daily Blog in Kansai Dialect](https://ai-blog.hirokiwa.com)<br/>
-**About This Product** 👉 [Running a blog with only generated AI #AI - Qiita](https://qiita.com/hirokiwa/items/61a7a61523f04d30b666)
+**About This Product** 👉 [Running a blog with only generative AI #AI - Qiita](https://qiita.com/hirokiwa/items/61a7a61523f04d30b666)
