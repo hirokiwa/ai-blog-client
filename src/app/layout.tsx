@@ -25,6 +25,9 @@ export const metadata: Metadata = {
     description: '毎日19時更新！AIおじさんによる独り言日記',
     creator: 'hiroki_int',
   },
+  other: {
+    "google-adsense-account": "ca-pub-5553296223899055",
+  }
 }
 
 export const dynamic = 'force-dynamic';
