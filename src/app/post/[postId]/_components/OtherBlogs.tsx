@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import getAllBlogs from "@/functions/getAllBlogs";
 import Link from 'next/link';
 import SideBlogs from "./SideBlogs";
