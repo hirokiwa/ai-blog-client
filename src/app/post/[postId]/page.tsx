@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic';
-
 import Image from "next/image";
 import autherIcon from './../../../../public/icon.png'
 import getBlog from './getBlog';
