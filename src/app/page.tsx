@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import styles from './globals.module.css'
 import Image from "next/image";
 import topImage from './../../public/top-image.png'
