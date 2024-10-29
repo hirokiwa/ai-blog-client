@@ -3,13 +3,12 @@ export const dynamic = 'force-dynamic';
 import styles from './globals.module.css'
 import Image from "next/image";
 import topImage from './../../public/top-image.png'
-import getAllBlogs from '../functions/getAllBlogs';
+import getRecentBlogs from '@/functions/getRecentBlogs';
 import AnimationMessage from '@/components/AnimationMessage';
 import BlogContainer from './_components/BlogContainer';
 
-
 const Content = async () => {
-  const allBlogs =  await getAllBlogs();
+  const recentBlogs =  await getRecentBlogs();
   return (
     <main className={styles.main}>
       <div className={styles.centerContent}>
@@ -18,8 +17,8 @@ const Content = async () => {
           src={topImage}
           className='mb-12 bg-gray-100'
         />
-        {allBlogs
-          ? <BlogContainer blogData={allBlogs}/>
+        {recentBlogs
+          ? <BlogContainer blogData={recentBlogs}/>
           : <p>
               <strong>記事が見つかりません。</strong>
             </p>
