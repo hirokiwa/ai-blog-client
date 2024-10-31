@@ -7,6 +7,7 @@ import styles from './../../globals.module.css';
 import formatContent from "@/functions/formatContent";
 import TopicPath from "@/components/TopicPath";
 import AutherProfile from "./_components/AutherProfile";
+import SideBlogs from "./_components/SideBlogs";
 import OtherBlogs from "./_components/OtherBlogs";
 
 const Content = ({ blogData }: { blogData: blog }) => {
