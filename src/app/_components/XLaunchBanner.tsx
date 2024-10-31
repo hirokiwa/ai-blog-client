@@ -14,7 +14,7 @@ const XLaunchBanner = () => (
     <Image
       alt="AIおじさん公式 X が誕生しました！"
       src={XLaynchBanner}
-      className="bg-gray-100 group-hover:shadow-xl group-hover:scale-[1.01] overflow-hidden transition-all duration-150 ease-[cubic-bezier(.17,.67,.83,.67)] rounded-md"
+      className="bg-gray-100 group-hover:shadow-xl group-hover:scale-[1.01] group-focus:shadow-xl group-focus:scale-[1.01] overflow-hidden transition-all duration-150 ease-[cubic-bezier(.17,.67,.83,.67)] rounded-md"
     />
   </Link>
 );
