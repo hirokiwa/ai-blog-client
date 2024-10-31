@@ -1,5 +1,4 @@
 import getAllBlogs from "@/functions/getAllBlogs";
-import Link from 'next/link';
 import SideBlogs from "./SideBlogs";
 import BlogContainer from "@/app/_components/BlogContainer";
 import XLaunchBanner from "@/app/_components/XLaunchBanner";
