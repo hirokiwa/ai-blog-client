@@ -2,6 +2,7 @@ import getAllBlogs from "@/functions/getAllBlogs";
 import Link from 'next/link';
 import SideBlogs from "./SideBlogs";
 import BlogContainer from "@/app/_components/BlogContainer";
+import XLaunchBanner from "@/app/_components/XLaunchBanner";
 
 interface Props {
   currendId: string;
@@ -27,9 +28,12 @@ const OtherBlogs = async ({currendId}: Props) => {
         previousBlog={previousBlog}
         nextBlog={nextBlog}
       />
+      <hr />
+      <div className="py-12">
+        <XLaunchBanner/>
+        </div>
       {recommendBlogs.length > 0 &&
         <>
-          <hr className="mb-16"/>
           <BlogContainer
             blogData={recommendBlogs}
             label="おすすめの記事"
