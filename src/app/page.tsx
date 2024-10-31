@@ -30,7 +30,7 @@ const Content = async () => {
               href="/posts"
               aria-label="記事一覧"
               title="記事一覧"
-              className="bg-rose-600 px-12 py-4 rounded-md relative hover:opacity-80 mt-20 flex gap-2 items-center group"
+              className="bg-rose-600 px-12 py-4 rounded-md relative hover:opacity-80 flex gap-2 items-center group"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
