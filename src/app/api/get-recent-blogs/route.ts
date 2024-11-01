@@ -7,11 +7,11 @@ const RECENT_BLOG_QUANTITY = 5;
 
 export async function GET() {
   const useMockData = process.env.NEXT_PUBLIC_USE_MOCK === "true";
-  const data = useMockData ? getMockBlogs(RECENT_BLOG_QUANTITY) : await getAllBlogs();
+  const data = useMockData ? getMockBlogs(RECENT_BLOG_QUANTITY) : await getRecentBlogs();
   return NextResponse.json({ data: data } );
 }
 
-const getAllBlogs = async (): Promise<blog[]|undefined> => {
+const getRecentBlogs = async (): Promise<blog[]|undefined> => {
   try {
     const blogCollection = initializeBlogCollection();
     const TIME_DIFFERENCE = Number(process.env.TIME_DIFFERENCE ?? "0");
