@@ -31,3 +31,9 @@ export const getMockBlogs = (limit?: number) => {
     ? repeatBlogs({ blogs: blogs, limit: limit })
     : blogs;
 };
+
+export const getMockBlogById = (blogId: string) => {
+  const allBlogs = getMockBlogs();
+  const blog = allBlogs.find(a => a.id === blogId);
+  return blog;
+};

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { initializeApp } from "firebase/app";
 import { getFirestore, Timestamp, doc, getDoc } from "firebase/firestore";
-import { getMockBlogs } from '../../_functions/mock-data-provider/getMockBlogs';
+import { getMockBlogById } from '../../_functions/mock-data-provider/getMockBlogs';
 
 export async function GET(
   req: NextRequest,
@@ -15,12 +15,6 @@ export async function GET(
   const data = useMockData ? getMockBlogById(blogId) : await getBlog(blogId);
   return NextResponse.json({ data: data ?? undefined } );
 }
-
-const getMockBlogById = (blogId: string) => {
-  const allBlogs = getMockBlogs();
-  const blog = allBlogs.find(a => a.id === blogId);
-  return blog;
-};
 
 const getBlog = async (blogId: string): Promise<blog|undefined> => {
   try {
