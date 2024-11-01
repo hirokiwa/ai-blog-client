@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 import { initializeApp } from "firebase/app";
-import { collection, getFirestore, getDocs, Timestamp, query, where, orderBy, doc, getDoc } from "firebase/firestore";
+import { getFirestore, Timestamp, doc, getDoc } from "firebase/firestore";
 
 export async function GET(
   req: NextRequest,
