@@ -1,11 +1,13 @@
 import { NextResponse } from 'next/server';
 import { initializeApp } from "firebase/app";
 import { collection, getFirestore, getDocs, Timestamp, query, where, orderBy, limit } from "firebase/firestore";
+import { getMockBlogs } from '../_functions/mock-data-provider/getMockBlogs';
 
 const RECENT_BLOG_QUANTITY = 5;
 
 export async function GET() {
-  const data = await getAllBlogs();
+  const useMockData = process.env.NEXT_PUBLIC_USE_MOCK === "true";
+  const data = useMockData ? getMockBlogs(RECENT_BLOG_QUANTITY) : await getAllBlogs();
   return NextResponse.json({ data: data } );
 }
 
