@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { initializeApp } from "firebase/app";
 import { getFirestore, Timestamp, doc, getDoc } from "firebase/firestore";
-import { getMockBlogById } from '../../_functions/mock-data-provider/getMockBlogs';
+import { getMockBlogById } from '../../_functions/mock-data-provider/getMockBlogById';
 
 export async function GET(
   req: NextRequest,
