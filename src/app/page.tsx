@@ -57,7 +57,7 @@ const Content = async () => {
             </a>
           </div>
         )}
-        <div className="pt-24">
+        <div className="pt-24 px-2">
           <XLaunchBanner/>
         </div>
       </div>
