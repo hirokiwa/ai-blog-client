@@ -27,7 +27,7 @@ const OtherBlogs = async ({ currendId }: Props) => {
     <>
       <SideBlogs previousBlog={previousBlog} nextBlog={nextBlog} />
       <hr />
-      <div className="py-12">
+      <div className="py-12 px-2">
         <XLaunchBanner />
       </div>
       {recommendBlogs.length > 0 && (
