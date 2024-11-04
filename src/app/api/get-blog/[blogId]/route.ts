@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { initializeApp } from "firebase/app";
-import { getFirestore, Timestamp, doc, getDoc } from "firebase/firestore";
+import { Timestamp, getDoc } from "firebase/firestore";
 import { getMockBlogById } from '../../_functions/mock-data-provider/getMockBlogById';
+import { initializeDoc } from '../../_functions/firestore/firestore';
 
 export async function GET(
   req: NextRequest,
@@ -34,40 +34,6 @@ const getBlog = async (blogId: string): Promise<blog|undefined> => {
   } catch (e) {
     console.error("Faild to get all blogs.", e);
     return undefined;
-  }
-}
-
-const initializeDb = () => {
-  try {
-    const firebaseConfig = {
-      apiKey: process.env.FIREBASE_API_KEY,
-      projectId: process.env.FIREBASE_PROJECT_ID,
-    };
-    
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-  
-    return db;
-  } catch (e) {
-    console.error("Faild to initialize app", e);
-    return undefined;
-  }
-}
-
-const initializeDoc = (blogId: string) => {
-  try {
-    const db = initializeDb();
-    const collectionName = process.env.FIREBASE_BLOG_COLLECTION;
-    if (!db || !collectionName) {
-      throw new Error(!db
-        ? "Faild to initialize app."
-        : "Collection Name is not found."
-      );
-    }
-    return doc(db, collectionName, blogId);
-  } catch (e) {
-    console.error("Faild to initialize blog collection.", e);
-    throw e;
   }
 }
 
