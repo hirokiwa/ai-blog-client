@@ -40,9 +40,9 @@ const Content = async () => {
         <div>
           <TopicPath path={pathData} />
         </div>
-        <div className='sticky bottom-4 z-10 w-fit self-end pr-1 pointer-events-none'>
-          <ReturnToTopButton/>
-        </div>
+      </div>
+      <div className={`${styles.centerContent} sticky bottom-4 z-10 flex justify-end pr-1 pointer-events-none`}>
+        <ReturnToTopButton/>
       </div>
     </main>
   )
