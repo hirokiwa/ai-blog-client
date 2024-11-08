@@ -1,0 +1,15 @@
+.frameInFromBottom {
+  animation-name: frame-in-from-bottom-keyframes;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes frame-in-from-bottom-keyframes {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import styles from "./returnToTopButton.module.css";
 
 const ReturnToTopButton = () => {
   const [scrollY, setScrollY] = useState<number>(0);
@@ -31,7 +32,7 @@ const ReturnToTopButton = () => {
         onClick={handleScrollToTop}
         title="ページトップへ"
         aria-label="ページトップへ"
-        className="bg-pink-600 rounded-full flex items-center justify-center p-4 shadow-xl group opacity-100 hover:opacity-80 focus:opacity-80 hover:shadow-2xl focus:shadow-2xl transition-all duration-150 ease-[cubic-bezier(.17,.67,.83,.67)] pointer-events-auto"
+        className={`bg-pink-600 rounded-full flex items-center justify-center p-4 shadow-xl group opacity-100 hover:opacity-80 focus:opacity-80 hover:shadow-2xl focus:shadow-2xl transition-all duration-150 ease-[cubic-bezier(.17,.67,.83,.67)] pointer-events-auto overflow-hidden ${styles.frameInFromBottom}`}
       >
         <div className="group-hover:-translate-y-1 group-focus:-translate-y-1 transition-all duration-75 ease-[cubic-bezier(.17,.67,.83,.67)]">
           <svg
