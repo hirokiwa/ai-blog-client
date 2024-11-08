@@ -6,6 +6,7 @@ import AnimationMessage from '@/components/AnimationMessage';
 import BlogContainer from '../_components/BlogContainer';
 import TopicPath from '@/components/TopicPath';
 import XLaunchBanner from '../_components/XLaunchBanner';
+import ReturnToTopButton from '../_components/ReturnToTopButton';
 
 const Content = async () => {
   const allBlogs = await getAllBlogs();
@@ -39,6 +40,9 @@ const Content = async () => {
         <div>
           <TopicPath path={pathData} />
         </div>
+      </div>
+      <div className='fixed bottom-8 right-8 z-10'>
+        <ReturnToTopButton/>
       </div>
     </main>
   )
