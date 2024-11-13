@@ -5,6 +5,7 @@ import getAllBlogs from '../../functions/getAllBlogs';
 import AnimationMessage from '@/components/AnimationMessage';
 import BlogContainer from '../_components/BlogContainer';
 import TopicPath from '@/components/TopicPath';
+import XLaunchBanner from '../_components/XLaunchBanner';
 
 const Content = async () => {
   const allBlogs = await getAllBlogs();
