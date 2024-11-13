@@ -24,6 +24,9 @@ const Content = async () => {
         <div>
           <TopicPath path={pathData} />
         </div>
+        <div className="px-2 pb-4">
+          <XLaunchBanner/>
+        </div>
         <div>
           {allBlogs
             ? <BlogContainer blogData={allBlogs} label='記事一覧'/>
