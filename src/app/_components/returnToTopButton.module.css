@@ -13,3 +13,67 @@
     transform: translateY(0);
   }
 }
+
+.enlargeButton {
+  animation-name: enlargeButtonKeyframes;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes enlargeButtonKeyframes {
+  0% {
+    width: 3.5rem;
+  }
+
+  100% {
+    width: 6rem;
+  }
+}
+
+.minimizeButton {
+  animation-name: minimizeButtonKeyframes;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes minimizeButtonKeyframes {
+  0% {
+    width: 6rem;
+  }
+
+  100% {
+    width: 3.5rem;
+  }
+}
+
+.franeInButtonText {
+  animation-name: franeInButtonTextKeyframes;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes franeInButtonTextKeyframes {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.franeOutButtonText {
+  animation-name: franeOutButtonTextKeyframes;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes franeOutButtonTextKeyframes {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
