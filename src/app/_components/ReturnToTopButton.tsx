@@ -4,13 +4,11 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import styles from "./returnToTopButton.module.css";
 import { useStickyState } from "./useSticky";
 
-const ADJUSTMENT_FOR_MOBILE_DEVICE = 2;
-
 const ReturnToTopButton = () => {
   const [scrollY, setScrollY] = useState<number>(0);
   const [isScrolling, setIsScrolling] = useState<boolean>(false);
 
-  const { stickyRef, isSticky, resetIsSticky } = useStickyState(16 + ADJUSTMENT_FOR_MOBILE_DEVICE);
+  const { stickyRef, isSticky, resetIsSticky } = useStickyState(16);
 
   const displayButton = useMemo(
     () => !(scrollY < 10 || isScrolling),
