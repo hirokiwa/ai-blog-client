@@ -22,13 +22,13 @@ const TopicPath = ({path}: Props) => {
               {p.href
                 ? <Link
                     href={p.href}
-                    className="underline hover:opacity-50"
+                    className="underline hover:opacity-50 truncate max-w-[24ch] sm:max-w-[48ch]"
                     title={p.name}
                     aria-label={p.name}
                   >
                     {p.name}
                   </Link>
-                : <p>{p.name}</p>
+                : <p className='truncate max-w-[24ch] sm:max-w-[48ch]'>{p.name}</p>
               }
             </div>
         )})
