@@ -25,6 +25,22 @@ export const metadata: Metadata = {
     description: '毎日19時更新！AIおじさんによる独り言日記',
     creator: 'hiroki_int',
   },
+  icons: {
+    icon: [
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', rel: 'shortcut icon' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180' },
+    ],
+  },
+  manifest: '/site.webmanifest',
+  appleWebApp: {
+    title: 'AI おじさん',
+    capable: true,
+    statusBarStyle: 'default',
+  },
   other: {
     "google-adsense-account": "ca-pub-5553296223899055",
   }
