@@ -138,6 +138,10 @@ hr {
   background:  rgb(var(--hover-background-start-rgb));
 }
 
+.hoverdBackgroundColorParentLink:focus:has(.hoverdBackgroundColor) .hoverdBackgroundColor {
+  background:  rgb(var(--hover-background-start-rgb));
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

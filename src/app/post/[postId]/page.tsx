@@ -24,7 +24,7 @@ const Content = ({ blogData }: { blogData: blog }) => {
     <div>
       <div className={styles.sidePadding}>
         <TopicPath path={pathData} />
-        <h1 className='text-4xl font-bold my-4'>{blogData.title}</h1>
+        <h1 className='text-2xl md:text-4xl font-bold my-4'>{blogData.title}</h1>
         <div className='flex items-center mt-8 mb-16'>
           <Image
             src={autherIcon}
