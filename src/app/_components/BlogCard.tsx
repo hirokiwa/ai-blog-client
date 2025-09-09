@@ -12,9 +12,9 @@ const BlogCard = ({blogData}: Props) => {
       href={`/post/${blogData.id}`}
       title={blogData.title}
       aria-label={blogData.title}
-      className='group m-0'
+      className='group m-0 hoverdBackgroundColorParentLink'
     >
-      <div className='p-4 md:p-8 hoverdBackgroundColor group-hover:opacity-80'>
+      <div className='p-4 md:p-8 hoverdBackgroundColor group-hover:opacity-80 group-focus:opacity-80'>
         <div className='flex items-center'>
           <Image
             src={autherIcon}
@@ -28,7 +28,7 @@ const BlogCard = ({blogData}: Props) => {
             <p className='leading-0 opacity-60 text-sm md:text-base'>{`${blogData.publishedAt.getFullYear()}/${blogData.publishedAt.getMonth() + 1}/${blogData.publishedAt.getDate()} ${String(blogData.publishedAt.getHours()).padStart(2, '0')}:${String(blogData.publishedAt.getMinutes()).padStart(2, '0')}`}</p>
           </div>
         </div>
-        <h2 className='text-lg md:text-2xl font-bold my-2 md:my-4 group-hover:underline'>{blogData.title}</h2>
+        <h2 className='text-lg md:text-2xl font-bold my-2 md:my-4 group-hover:underline group-focus:underline'>{blogData.title}</h2>
         <p className='truncate opacity-60'>{`${blogData.body}`}</p>
     </div>
     </Link>

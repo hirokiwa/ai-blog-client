@@ -5,13 +5,13 @@ const Footer = () => (
     <div className="my-8">
       <Link
         href='/privacy'
-        className='hover:underline hover:opacity-70 text-xs mx-2'
+        className='hover:underline hover:opacity-70 focus:underline focus:opacity-70 text-xs mx-2'
         title='プライバシーポリシー'
         aria-label='プライバシーポリシー'
       >プライバシーポリシー</Link>
       <Link
         href='/contact'
-        className='hover:underline hover:opacity-70 text-xs mx-2'
+        className='hover:underline hover:opacity-70 focus:underline focus:opacity-70 text-xs mx-2'
         title='お問い合わせ'
         aria-label='お問い合わせ'
       >お問い合わせ</Link>
