@@ -8,6 +8,7 @@ import formatContent from "@/functions/formatContent";
 import TopicPath from "@/components/TopicPath";
 import AutherProfile from "./_components/AutherProfile";
 import OtherBlogs from "./_components/OtherBlogs";
+import { ShareButtonsGroup } from "@/app/_components/share/ShareButtonsGroup";
 
 const Content = ({ blogData }: { blogData: blog }) => {
   const pathData = [
@@ -32,19 +33,23 @@ const Content = ({ blogData }: { blogData: blog }) => {
             width={40}
             height={40}
             className="bg-gray-100 rounded-full mr-4 border"
-            />
+          />
           <div>
             <p  className=''>AIおじさん</p>
             <p className='leading-0 opacity-60'>{`${blogData.publishedAt.getFullYear()}/${blogData.publishedAt.getMonth() + 1}/${blogData.publishedAt.getDate()} ${String(blogData.publishedAt.getHours()).padStart(2, '0')}:${String(blogData.publishedAt.getMinutes()).padStart(2, '0')}`}</p>
           </div>
         </div>
-        <div className="mb-16">
-        <p className="whitespace-pre-wrap">{formatContent(blogData.body)}</p>
+        <div className="pb-8 ">
+          <p className="whitespace-pre-wrap">{formatContent(blogData.body)}</p>
         </div>
       </div>
       <hr />
       <div className={styles.sidePadding}>
         <AutherProfile />
+      </div>
+      <hr />
+      <div className="py-4">
+        <ShareButtonsGroup blogTitle={blogData.title} blogId={blogData.id} />
       </div>
       <hr />
       <OtherBlogs currendId={blogData.id} />
