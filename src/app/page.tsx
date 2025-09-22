@@ -7,6 +7,7 @@ import getRecentBlogs from "@/functions/getRecentBlogs";
 import AnimationMessage from "@/components/AnimationMessage";
 import BlogContainer from "./_components/BlogContainer";
 import XLaunchBanner from "@/app/_components/XLaunchBanner";
+import AdSense from "./_components/Adsense";
 
 const Content = async () => {
   const recentBlogs = await getRecentBlogs();
@@ -19,7 +20,11 @@ const Content = async () => {
           className="mb-12 bg-gray-100"
         />
         {recentBlogs ? (
-          <BlogContainer blogData={recentBlogs} />
+          <>
+            <BlogContainer blogData={recentBlogs.slice(0, 2)} label="最新の記事"/>
+            <AdSense adSlot="3238891793"/>
+            <BlogContainer blogData={recentBlogs.slice(2)}/>
+          </>
         ) : (
           <p>
             <strong>記事が見つかりません。</strong>

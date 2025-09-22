@@ -7,7 +7,7 @@ interface Props {
 
 const BlogContainer = ({ blogData, label }: Props) => (
   <>
-    <p className='text-2xl font-bold mx-4 my-2 opacity-90'>{ label ?? "最新の記事"}</p>
+    {label && <p className='text-2xl font-bold mx-4 my-2 opacity-90'>{label}</p>}
     <hr/>
     {
       blogData.map((b) => (

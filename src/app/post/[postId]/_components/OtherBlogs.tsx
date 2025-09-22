@@ -2,6 +2,7 @@ import getAllBlogs from "@/functions/getAllBlogs";
 import SideBlogs from "./SideBlogs";
 import BlogContainer from "@/app/_components/BlogContainer";
 import XLaunchBanner from "@/app/_components/XLaunchBanner";
+import AdSense from "@/app/_components/Adsense";
 
 interface Props {
   currendId: string;
@@ -33,6 +34,7 @@ const OtherBlogs = async ({ currendId }: Props) => {
       {recommendBlogs.length > 0 && (
         <>
           <BlogContainer blogData={recommendBlogs} label="おすすめの記事" />
+          <AdSense adSlot="4033044813"/>
         </>
       )}
     </>

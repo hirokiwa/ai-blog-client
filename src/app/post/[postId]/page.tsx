@@ -9,6 +9,7 @@ import TopicPath from "@/components/TopicPath";
 import AutherProfile from "./_components/AutherProfile";
 import OtherBlogs from "./_components/OtherBlogs";
 import { ShareButtonsGroup } from "@/app/_components/share/ShareButtonsGroup";
+import AdSense from "@/app/_components/Adsense";
 
 const Content = ({ blogData }: { blogData: blog }) => {
   const pathData = [
@@ -25,6 +26,9 @@ const Content = ({ blogData }: { blogData: blog }) => {
     <div>
       <div className={styles.sidePadding}>
         <TopicPath path={pathData} />
+        <div className="py-3">
+          <AdSense adSlot="3238891793"/>
+        </div>
         <h1 className='text-2xl md:text-4xl font-bold my-4'>{blogData.title}</h1>
         <div className='flex items-center mt-8 mb-16'>
           <Image
@@ -41,6 +45,9 @@ const Content = ({ blogData }: { blogData: blog }) => {
         </div>
         <div className="pb-8 ">
           <p className="whitespace-pre-wrap">{formatContent(blogData.body)}</p>
+        </div>
+        <div className="pt-3 pb-11">
+          <AdSense adSlot="1573568280"/>
         </div>
       </div>
       <hr />

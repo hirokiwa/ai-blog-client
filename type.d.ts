@@ -1,3 +1,7 @@
+interface Window {
+  adsbygoogle?: unknown[];
+}
+
 interface blog extends blogData { id: string; }
 
 interface blogData extends generatedPart {
