@@ -6,8 +6,10 @@ const scriptContent = `(() => {
   const ROOT_CLASS = "ai-blog-widget";
   const CARD_WRAPPER_CLASS = "ai-blog-scroll";
   const CARD_CLASS = "ai-blog-card";
+  const SKELETON_CLASS = "ai-blog-skeleton";
   const AUTHOR_CLASS = "ai-blog-author";
-  const TEXT_LIMIT = 60;
+  const TEXT_LIMIT = 100;
+  const SKELETON_COUNT = 5;
 
   const resolveBaseUrl = (scriptEl) => {
     try {
@@ -80,6 +82,11 @@ const scriptContent = `(() => {
         line-height: 1.4;
         margin: 0 0 8px;
         color: #0f172a;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: calc(1.4em * 3);
       }
       .\${CARD_CLASS} .ai-blog-date {
         font-size: 0.8rem;
@@ -90,7 +97,11 @@ const scriptContent = `(() => {
         font-size: 0.9rem;
         line-height: 1.5;
         color: #374151;
-        min-height: 66px;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: calc(1.5em * 4);
       }
       .\${AUTHOR_CLASS} {
         display: flex;
@@ -114,6 +125,46 @@ const scriptContent = `(() => {
         font-size: 0.9rem;
         color: #374151;
         padding: 12px 0;
+      }
+      .\${CARD_CLASS}.\${SKELETON_CLASS} {
+        pointer-events: none;
+      }
+      .ai-blog-skeleton-block {
+        display: block;
+        width: 100%;
+        border-radius: 8px;
+        background: linear-gradient(90deg, #f3f4f6 0%, #e5e7eb 50%, #f3f4f6 100%);
+        background-size: 200% 100%;
+        animation: ai-blog-skeleton-shimmer 1.4s ease-in-out infinite;
+      }
+      .ai-blog-skeleton-title {
+        height: calc(1.4em * 3);
+        margin-bottom: 12px;
+      }
+      .ai-blog-skeleton-date {
+        height: 14px;
+        margin-bottom: 16px;
+      }
+      .ai-blog-skeleton-body {
+        height: calc(1.5em * 4);
+      }
+      .ai-blog-skeleton-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 9999px;
+      }
+      .ai-blog-skeleton-author-text {
+        width: 60%;
+        height: 16px;
+        margin-left: 10px;
+      }
+      @keyframes ai-blog-skeleton-shimmer {
+        0% {
+          background-position: -200px 0;
+        }
+        100% {
+          background-position: calc(200px + 100%) 0;
+        }
       }
     \`;
     document.head.appendChild(style);
@@ -163,6 +214,31 @@ const scriptContent = `(() => {
     return card;
   };
 
+  const createSkeletonCard = () => {
+    const card = document.createElement("div");
+    card.className = \`\${CARD_CLASS} \${SKELETON_CLASS}\`;
+    card.innerHTML = \`
+      <div class="ai-blog-skeleton-block ai-blog-skeleton-title"></div>
+      <div class="ai-blog-skeleton-block ai-blog-skeleton-date"></div>
+      <div class="ai-blog-skeleton-block ai-blog-skeleton-body"></div>
+      <div class="\${AUTHOR_CLASS}">
+        <div class="ai-blog-skeleton-block ai-blog-skeleton-avatar"></div>
+        <div class="ai-blog-skeleton-block ai-blog-skeleton-author-text"></div>
+      </div>
+    \`;
+    return card;
+  };
+
+  const showSkeleton = (root) => {
+    const wrapper = document.createElement("div");
+    wrapper.className = CARD_WRAPPER_CLASS;
+    for (let i = 0; i < SKELETON_COUNT; i += 1) {
+      wrapper.appendChild(createSkeletonCard());
+    }
+    root.innerHTML = "";
+    root.appendChild(wrapper);
+  };
+
   const render = (root, blogs, iconUrl, baseUrl) => {
     const wrapper = document.createElement("div");
     wrapper.className = CARD_WRAPPER_CLASS;
@@ -193,7 +269,7 @@ const scriptContent = `(() => {
     }
     ensureStyle();
     const root = createRoot(scriptEl);
-    displayState(root, "読み込み中...");
+    showSkeleton(root);
     const baseUrl = resolveBaseUrl(scriptEl);
     const iconUrl = new URL("/ojisan_icon_128x128.webp", baseUrl).toString();
     try {
