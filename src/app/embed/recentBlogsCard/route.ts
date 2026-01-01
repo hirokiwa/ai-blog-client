@@ -58,6 +58,8 @@ const scriptContent = `(() => {
         overflow-x: auto;
         padding: 8px 16px;
         scrollbar-width: thin;
+        scroll-snap-type: x mandatory;
+        scroll-padding: 16px;
       }
       .\${CARD_WRAPPER_CLASS}::-webkit-scrollbar {
         height: 8px;
@@ -72,6 +74,8 @@ const scriptContent = `(() => {
         border: 1px solid #e5e7eb;
         border-radius: 16px;
         padding: 16px;
+        scroll-snap-align: start;
+        scroll-snap-stop: normal;
       }
       .\${CARD_CLASS}:hover,
       .\${CARD_CLASS}:focus {
