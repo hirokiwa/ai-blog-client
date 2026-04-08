@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getMockBlogs } from '../_functions/mock-data-provider/getMockBlogs';
 import { getPublishedBlogs } from '../_functions/blogs/blogs';
+import { createDailyResetCacheHeaders } from '../_functions/cache/cacheHeaders';
 
 const RECENT_BLOG_QUANTITY = 5;
 
@@ -23,18 +24,26 @@ const createCorsHeaders = (origin?: string | null): Record<string, string> => {
   };
 };
 
+const createResponseHeaders = (origin?: string | null) => ({
+  ...createCorsHeaders(origin),
+  ...createDailyResetCacheHeaders(),
+});
+
 
 export async function GET(request: Request) {
   const useMockData = process.env.NEXT_PUBLIC_USE_MOCK === "true";
   const data = useMockData
     ? getMockBlogs(RECENT_BLOG_QUANTITY)
     : await getPublishedBlogs(RECENT_BLOG_QUANTITY);
-  return NextResponse.json({ data: data }, { headers: createCorsHeaders(request.headers.get("origin")) } );
+  return NextResponse.json(
+    { data: data },
+    { headers: createResponseHeaders(request.headers.get("origin")) }
+  );
 }
 
 export function OPTIONS(request: Request) {
   return new NextResponse(null, {
     status: 204,
-    headers: createCorsHeaders(request.headers.get("origin")),
+    headers: createResponseHeaders(request.headers.get("origin")),
   });
 }

@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Timestamp, getDoc } from "firebase/firestore";
 import { getMockBlogById } from '../../_functions/mock-data-provider/getMockBlogById';
 import { initializeDoc } from '../../_functions/firestore/firestore';
+import { createDailyResetCacheHeaders } from '../../_functions/cache/cacheHeaders';
 
 export async function GET(
   req: NextRequest,
@@ -13,7 +14,10 @@ export async function GET(
   const useMockData = process.env.NEXT_PUBLIC_USE_MOCK === "true";
 
   const data = useMockData ? getMockBlogById(blogId) : await getBlog(blogId);
-  return NextResponse.json({ data: data ?? undefined } );
+  return NextResponse.json(
+    { data: data ?? undefined },
+    { headers: createDailyResetCacheHeaders() }
+  );
 }
 
 const getBlog = async (blogId: string): Promise<blog|undefined> => {
