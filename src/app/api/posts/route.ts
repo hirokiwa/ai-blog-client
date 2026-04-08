@@ -5,6 +5,7 @@ import {
   getPublishedBlogsPage,
   type PaginatedBlogsResult,
 } from "../_functions/blogs/blogs";
+import { createDailyResetCacheHeaders } from "../_functions/cache/cacheHeaders";
 
 const DEFAULT_PAGE_SIZE = 10;
 
@@ -41,5 +42,5 @@ export async function GET(request: NextRequest) {
     ? getMockBlogsPage(page, pageSize)
     : await getPublishedBlogsPage(page, pageSize);
 
-  return NextResponse.json({ data });
+  return NextResponse.json({ data }, { headers: createDailyResetCacheHeaders() });
 }
