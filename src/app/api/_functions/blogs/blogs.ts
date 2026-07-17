@@ -1,11 +1,9 @@
 import {
   Timestamp,
-  getCountFromServer,
   getDocs,
   limit,
   orderBy,
   query,
-  startAfter,
   where,
 } from "firebase/firestore";
 
@@ -42,12 +40,13 @@ const formatBlog = (rawBlog: any): blog => ({
   publishedAt: timeStampToDate(rawBlog.publishedAt),
 });
 
+const isPublicBlog = (rawBlog: any) => rawBlog.publiclyAvailable === true;
+
 const createPublishedBlogsQuery = () => {
   const blogCollection = initializeBlogCollection();
   return query(
     blogCollection,
     where("publishedAt", "<=", getPublishedDate()),
-    where("publiclyAvailable", "==", true),
     orderBy("publishedAt", "desc")
   );
 };
@@ -63,7 +62,10 @@ const fetchPublishedBlogDocs = async (fetchLimit?: number) => {
 export const getPublishedBlogs = async (fetchLimit?: number): Promise<blog[] | undefined> => {
   try {
     const blogDocs = await fetchPublishedBlogDocs(fetchLimit);
-    const blogs = blogDocs.map((doc) => formatBlog({ id: doc.id, ...doc.data() }));
+    const blogs = blogDocs
+      .map((doc) => ({ id: doc.id, ...doc.data() }))
+      .filter((blog) => isPublicBlog(blog))
+      .map((blog) => formatBlog(blog));
     return blogs.length > 0 ? blogs : undefined;
   } catch (e) {
     console.error("Faild to get blogs.", e);
@@ -76,22 +78,16 @@ export const getPublishedBlogsPage = async (
   pageSize: number
 ): Promise<PaginatedBlogsResult> => {
   try {
-    const baseQuery = createPublishedBlogsQuery();
-    const totalBlogsSnapshot = await getCountFromServer(baseQuery);
-    const totalBlogs = totalBlogsSnapshot.data().count;
+    const blogDocs = await fetchPublishedBlogDocs();
+    const allBlogs = blogDocs
+      .map((doc) => ({ id: doc.id, ...doc.data() }))
+      .filter((blog) => isPublicBlog(blog))
+      .map((blog) => formatBlog(blog));
+    const totalBlogs = allBlogs.length;
     const totalPages = Math.max(1, Math.ceil(totalBlogs / pageSize));
     const currentPage = Math.min(Math.max(page, 1), totalPages);
-    const skipCount = (currentPage - 1) * pageSize;
-    const cursorSnapshot = skipCount > 0
-      ? await getDocs(query(baseQuery, limit(skipCount)))
-      : null;
-    const lastVisibleDoc = cursorSnapshot?.docs[cursorSnapshot.docs.length - 1];
-    const pageQuery = lastVisibleDoc
-      ? query(baseQuery, startAfter(lastVisibleDoc), limit(pageSize))
-      : query(baseQuery, limit(pageSize));
-
-    const pageSnapshot = await getDocs(pageQuery);
-    const blogs = pageSnapshot.docs.map((doc) => formatBlog({ id: doc.id, ...doc.data() }));
+    const startIndex = (currentPage - 1) * pageSize;
+    const blogs = allBlogs.slice(startIndex, startIndex + pageSize);
 
     return {
       blogs,
