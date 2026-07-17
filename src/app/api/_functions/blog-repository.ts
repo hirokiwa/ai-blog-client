@@ -12,6 +12,8 @@ import {
 
 import { initializeBlogCollection, initializeDoc } from "./firestore/firestore";
 
+const BODY_LENGTH_LIMIT_FOR_PREVIEW = 45;
+
 type GetBlogsOptions = {
   limit?: number;
   errorMessage: string;
@@ -33,7 +35,8 @@ export const getBlogs = async ({
     const blogSnapshot = await getDocs(blogQuery);
     const formattedData = blogSnapshot.docs
       .filter((doc) => doc.data().publiclyAvailable)
-      .map((doc): blog => formatBlog(doc.id, doc.data()));
+      .map((doc): blog => formatBlog(doc.id, doc.data()))
+      .map((blog): blog => limitBodyLength(blog, BODY_LENGTH_LIMIT_FOR_PREVIEW));
 
     return formattedData.length > 0 ? formattedData : undefined;
   } catch (e) {
@@ -74,6 +77,15 @@ const formatBlog = (id: string, data: DocumentData): blog => ({
   body: data.body,
   publishedAt: timeStampToDate(data.publishedAt),
 });
+
+const limitBodyLength = (blog: blog, maxLength: number): blog => {
+  return blog.body.length <= maxLength
+    ? blog
+    : {
+      ...blog,
+      body: blog.body.slice(0, maxLength) + "...",
+    };
+};
 
 const timeStampToDate = (timeStamp: Timestamp) => {
   try {
